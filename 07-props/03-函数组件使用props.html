@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 准备容器 -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+    <script type="text/babel">
+        function Person(props) {
+            const { name, age, sex } = props;
+            return (
+                <ul>
+                    <li>{name}</li>
+                    <li>{sex}</li>
+                    <li>{age}</li>
+                </ul>
+            )
+        }
+        Person.propTypes = {
+            name: PropTypes.string.isRequired,
+            sex: PropTypes.string,
+            age: PropTypes.number,
+            // speak: PropTyps.func,
+        }
+        //指定默认标签默认值
+        Person.defaultProps = {
+            sex: '男',
+            age: 18
+        }
+        ReactDOM.render(<Person name='jerry' age={28} sex='女' />, document.getElementById('test'));
+
+    </script>
+</body>
+
+</html>
